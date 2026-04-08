@@ -60,6 +60,7 @@ export const deleteUser = (id: number) => api.delete(`/users/${id}`);
 
 // Maestros
 export const getMaestros = () => api.get('/maestros');
+export const getAllMaestros = () => api.get('/maestros/all');
 export const createMaestro = (data: any) => api.post('/maestros', data);
 export const updateMaestro = (id: number, data: any) => api.put(`/maestros/${id}`, data);
 

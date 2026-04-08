@@ -5,7 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 import { getUnreadCount } from '../lib/api';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { user, logout, canSeeNotifications, canManageUsers, canManageRepairs, canManageSales, canSeeDocs } = useAuth();
+  const { user, logout, canSeeNotifications, canManageUsers, canManageRepairs, canManageSales } = useAuth();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -64,6 +64,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                   Usuarios
                 </NavLink>
               )}
+              {canManageUsers && (
+                <NavLink to="/maestros" className={navClass}>
+                  Maestros
+                </NavLink>
+              )}
               {canSeeNotifications && (
                 <NavLink to="/notifications" className={navClass}>
                   Notificaciones
@@ -114,6 +119,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
               )}
               {canManageUsers && (
                 <NavLink to="/users" className={navClass} onClick={() => setMenuOpen(false)}>Usuarios</NavLink>
+              )}
+              {canManageUsers && (
+                <NavLink to="/maestros" className={navClass} onClick={() => setMenuOpen(false)}>Maestros</NavLink>
               )}
               {canSeeNotifications && (
                 <NavLink to="/notifications" className={navClass} onClick={() => setMenuOpen(false)}>

@@ -9,6 +9,7 @@ import Repairs from './pages/Repairs';
 import Sales from './pages/Sales';
 import Users from './pages/Users';
 import Notifications from './pages/Notifications';
+import Maestros from './pages/Maestros';
 
 function PrivateRoute({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
@@ -26,6 +27,7 @@ function AppRoutes() {
       <Route path="/repairs" element={<PrivateRoute><Repairs /></PrivateRoute>} />
       <Route path="/sales" element={<PrivateRoute><Sales /></PrivateRoute>} />
       <Route path="/users" element={<PrivateRoute><Users /></PrivateRoute>} />
+      <Route path="/maestros" element={<PrivateRoute><Maestros /></PrivateRoute>} />
       <Route path="/notifications" element={<PrivateRoute><Notifications /></PrivateRoute>} />
       <Route path="*" element={<Navigate to={user ? '/dashboard' : '/login'} replace />} />
     </Routes>
