@@ -272,13 +272,15 @@ export default function Repairs() {
 
                     <div className="flex items-center gap-4 mt-2 text-xs text-gray-400">
                       <span>Iniciado: {formatDate(r.repair?.assignedAt)}</span>
-                      {isActive && (
-                        <span className="text-orange-600 font-medium">⏱ {elapsed} en proceso</span>
-                      )}
                       {r.repair?.completedAt && (
                         <span>Completado: {formatDate(r.repair.completedAt)}</span>
                       )}
                     </div>
+                    {isActive && (
+                      <div className="mt-1.5 inline-flex items-center gap-1.5 bg-orange-50 border border-orange-200 rounded-lg px-3 py-1 text-xs text-orange-700 font-medium">
+                        ⏱ {elapsed} en proceso con {r.maestro?.nombre}
+                      </div>
+                    )}
                   </div>
 
                   {canManageRepairs && isActive && (

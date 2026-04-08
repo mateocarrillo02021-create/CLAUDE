@@ -24,9 +24,9 @@ export function formatElapsedTime(date: string | Date | null | undefined): strin
   const diffHours = Math.floor((diffMs % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
   const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
 
-  if (diffDays > 0) return `${diffDays}d ${diffHours}h`;
-  if (diffHours > 0) return `${diffHours}h ${diffMins}m`;
-  return `${diffMins}m`;
+  if (diffDays > 0) return `${diffDays} día${diffDays !== 1 ? 's' : ''}`;
+  if (diffHours > 0) return `${diffHours} hora${diffHours !== 1 ? 's' : ''}`;
+  return `${diffMins} minuto${diffMins !== 1 ? 's' : ''}`;
 }
 
 export function roleLabel(role: string): string {
