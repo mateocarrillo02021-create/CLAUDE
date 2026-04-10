@@ -24,7 +24,10 @@ function RepairModal({ onClose }: { onClose: () => void }) {
 
   const selectedVehicle = vehicles.find((v: any) => v.id === parseInt(vehicleId));
   const arregloItems = selectedVehicle?.arreglosNecesarios
-    ? selectedVehicle.arreglosNecesarios.split('\n').filter(Boolean)
+    ? selectedVehicle.arreglosNecesarios
+        .split(/[\n,]+/)
+        .map((s: string) => s.trim())
+        .filter(Boolean)
     : [];
 
   const mutation = useMutation({
