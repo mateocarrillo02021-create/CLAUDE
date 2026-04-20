@@ -177,7 +177,7 @@ function VehicleModal({
               <label className="label">Arreglos Necesarios</label>
               <textarea className="input" rows={3} value={form.arreglosNecesarios}
                 onChange={set('arreglosNecesarios')}
-                placeholder="Ej: Pintura y/o enderazado, cambiar repuestos..." />
+                placeholder={"Escribe un arreglo por línea. Ej:\nPintura y/o enderazado\nCambiar repuestos al carro"} />
             </div>
 
             <div>

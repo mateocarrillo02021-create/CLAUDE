@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
 import { getVehicles, getRepairs, getSales, getNotifications } from '../lib/api';
-import { formatCurrency, formatDate } from '../lib/utils';
+import { formatCurrency, formatDate, formatElapsedTime } from '../lib/utils';
 
 export default function Dashboard() {
   const { user, canSeePrice, canManageRepairs, canManageSales, canSeeNotifications } = useAuth();
@@ -120,9 +120,14 @@ export default function Dashboard() {
                 <div key={r.repair.id} className="py-2 border-b border-gray-100 last:border-0">
                   <div className="flex items-center justify-between">
                     <span className="font-medium text-sm">{r.vehicle?.placa}</span>
-                    <span className="text-xs text-gray-500">{r.maestro?.nombre}</span>
+                    <span className="text-xs text-orange-600 font-medium">
+                      ⏱ {formatElapsedTime(r.repair?.assignedAt)}
+                    </span>
                   </div>
-                  <p className="text-xs text-gray-500">{r.vehicle?.nombreCorto}</p>
+                  <div className="flex items-center justify-between mt-0.5">
+                    <p className="text-xs text-gray-500">{r.vehicle?.nombreCorto}</p>
+                    <p className="text-xs text-gray-400">{r.maestro?.nombre}</p>
+                  </div>
                 </div>
               ))}
               {activeRepairs.length === 0 && (
